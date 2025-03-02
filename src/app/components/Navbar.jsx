@@ -16,7 +16,6 @@ export default function Navbar() {
                 <Link href="/">
                     <span className="logo">LOGO</span>
                 </Link>
-                
                 <div className="nav-links">
                     <Link href="/" className={`nav-item ${pathname === '/' ? 'active' : ''}`}>HOME</Link>
                     <Link href="/about" className={`nav-item ${pathname === '/about' ? 'active' : ''}`}>ABOUT</Link>
