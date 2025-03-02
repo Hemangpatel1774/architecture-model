@@ -1,0 +1,95 @@
+/* Navbar.css */
+.navbar {
+  /* background-color: var(--background); */
+  height: 7vw;
+  z-index: 999;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 7vw 0 7vw;
+}
+
+.logo {
+  font-size: 3vw;
+  font-weight: bold;
+  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
+  background: repeating-linear-gradient(90deg, white 0%, var(--head-color-1) 50%, white 100%);
+  background-size: 200% 100%;
+  background-clip: text;
+  color: transparent;
+  animation: slide-bg 3s linear infinite;
+}
+
+@keyframes slide-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+.nav-links {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.5vw;
+}
+
+.nav-item {
+  font-family: var(--head-font);
+  color: var(--text-p);
+  text-decoration: none;
+  font-size: 1vw;
+  border: 0.1vw solid transparent;
+  transition: all 0.2s linear;
+  padding: 0.3vw 0.5vw 0.25vw;
+  &.active {
+    border-color: var(--head-color-1);
+    color: var(--head-color-1);
+  }
+}
+
+.nav-item:hover {
+  /* border-color: var(--head-color-1); */
+  color: var(--head-color-1);
+}
+
+.menu-button {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav-item {
+  padding: 0.5rem 0;
+  color: #666;
+  text-decoration: none;
+}
+
+.mobile-nav-item:hover {
+  color: #000;
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+  }
+
+  .menu-button {
+    display: none;
+  }
+}
