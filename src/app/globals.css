@@ -2,6 +2,7 @@
 :root {
   --background: #141414;
   --head-color-1: rgb(177,151,119);
+  --head-color-1-mob: rgb(205, 181, 151);
   --text-p: rgb(231, 231, 231);
   --font-ubuntu: "Ubuntu", serif;
   --font-Titillium :  "Titillium Web", serif;

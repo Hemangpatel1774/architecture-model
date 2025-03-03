@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { motion, AnimatePresence } from 'framer-motion';
@@ -10,6 +10,8 @@ import Img2 from "../assets/carousel/img (2).jpg";
 import Img3 from "../assets/carousel/img (3).jpg";
 import Img4 from "../assets/carousel/img (4).jpg";
 import Img5 from "../assets/carousel/img (5).jpg";
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const images = [Img1, Img2, Img3, Img4, Img5];
 const titles = ["Strong foundation base", "Efficient lighting system", "Elegant interior design", "Spacious living area", "Durable roofing structure",
@@ -18,6 +20,18 @@ const titles = ["Strong foundation base", "Efficient lighting system", "Elegant 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [firstCycle, setFirstCycle] = useState(true);
+
+  const linksRef = useRef([]);
+  useGSAP(() => {
+    // Animate each link one by one
+    gsap.to(linksRef.current, {
+      scale: 1,
+      opacity: 1,
+      delay: 0.75,
+      stagger: 0.5, // Time delay between each animation
+      duration: 1, // Duration of each animation
+    });
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -75,14 +89,14 @@ const Carousel = () => {
       <div className='carousel-extra-area'>
         {/* New Section with Line and Text in Bottom Left */}
         <div className="carousel-subtext">
-          <hr className="carousel-line" />
-          <p className="carousel-description">Architecture  &  Interior Design</p>
+          <hr className="carousel-line"/>
+          <p ref={(el) => (linksRef.current[0] = el)} className="carousel-description">Architecture  &  Interior Design</p>
         </div>
         <div className="socialSidebar">
-          <span className="socialIcon"><FaFacebookF /></span>
-          <span className="socialIcon"><FaTwitter /></span>
-          <span className="socialIcon"><FaInstagram /></span>
-          <span className="socialIcon"><FaLinkedinIn /></span>
+          <span ref={(el) => (linksRef.current[1] = el)} className="socialIcon"><FaFacebookF /></span>
+          <span ref={(el) => (linksRef.current[2] = el)} className="socialIcon"><FaTwitter /></span>
+          <span ref={(el) => (linksRef.current[3] = el)} className="socialIcon"><FaInstagram /></span>
+          <span ref={(el) => (linksRef.current[4] = el)} className="socialIcon"><FaLinkedinIn /></span>
         </div>
       </div>
     </div>
